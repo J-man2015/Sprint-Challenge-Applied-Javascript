@@ -17,3 +17,85 @@
 // </div>
 //
 // Create a card for each of the articles and add the card to the DOM.
+
+axios.get('https://lambda-times-backend.herokuapp.com/articles')
+.then((url) =>{
+ url.data.articles.bootstrap.forEach((items)=>{
+     const container=document.querySelector('.cards-container');
+     container.appendChild(Cardcreator(items))
+    console.log(items);
+ })
+ 
+})
+axios.get('https://lambda-times-backend.herokuapp.com/articles')
+.then((url) =>{
+ url.data.articles.technology.forEach((items)=>{
+     const container=document.querySelector('.cards-container');
+     container.appendChild(Cardcreator(items))
+    console.log(items);
+ })
+ 
+})
+
+axios.get('https://lambda-times-backend.herokuapp.com/articles')
+.then((url) =>{
+ url.data.articles.node.forEach((items)=>{
+     const container=document.querySelector('.cards-container');
+     container.appendChild(Cardcreator(items))
+    console.log(items);
+ })
+ 
+})
+
+axios.get('https://lambda-times-backend.herokuapp.com/articles')
+.then((url) =>{
+ url.data.articles.jquery.forEach((items)=>{
+     const container=document.querySelector('.cards-container');
+     container.appendChild(Cardcreator(items))
+    console.log(items);
+ })
+ 
+})
+
+axios.get('https://lambda-times-backend.herokuapp.com/articles')
+.then((url) =>{
+ url.data.articles.javascript.forEach((items)=>{
+     const container=document.querySelector('.cards-container');
+     container.appendChild(Cardcreator(items))
+    console.log(items);
+ })
+ 
+})
+
+
+function Cardcreator(obj){
+    // create elements
+    const cardDiv=document.createElement('div');
+    const headlineDiv=document.createElement('div');
+    const authorDiv=document.createElement('div');
+    const imgcontainDiv=document.createElement('div');
+    const authorimg=document.createElement('img');
+    const authorspan=document.createElement('span');
+    
+    //class names/attributes
+    cardDiv.classList.add('card');
+    headlineDiv.classList.add('headline');
+    authorDiv.classList.add('author');
+    imgcontainDiv.classList.add('img-container');
+    authorimg.src= `${obj.authorPhoto}`;
+    
+    //text
+    headlineDiv.textContent= `${obj.headline}`;
+    authorspan.textContent= `${obj.authorName}`;
+    
+   
+    // structure elements
+    cardDiv.appendChild(headlineDiv);
+    cardDiv.appendChild(authorDiv);
+    authorDiv.appendChild(imgcontainDiv);
+    authorDiv.appendChild(authorspan);
+    imgcontainDiv.appendChild(authorimg);
+
+    // return div
+    return cardDiv;
+}
